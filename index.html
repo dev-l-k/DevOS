@@ -24,9 +24,9 @@
     <div class="window" id="win-contact" style="top:70px; left:60px; width: 320px; display:none">
         <div class="window-header">
             <div class="traffic-lights">
-                <span class="dot dot-close" onclick="closeWindow()"></span>
-                <span class="dot dot-min" onclick="minimizeWindow()"></span>
-                <span class="dot dot-max" onclick="toggleFullscreen()"></span>
+                <span class="dot dot-close" onclick="closeWindow('win-contact','dock-contact')"></span>
+                <span class="dot dot-min" onclick="minimizeWindow('win-contact')"></span>
+                <span class="dot dot-max" onclick="toggleFullscreen('win-contact')"></span>
             </div>
             <div class="window-title">About Devloper</div>
 
@@ -44,6 +44,53 @@
 
             </div>
         </div>
+    </div>
+    <div class="window" id="win-terminal" style="top: 90px; left:180px; width: 420px; display:none">
+        <div class="window-header">
+            <div class="traffic-lights">
+                <span class="dot dot-close" onclick="closeWindow('win-terminal','dock-term')"></span>
+                <span class="dot dot-min" onclick="minimizeWindow('win-terminal')"></span>
+                <span class="dot dot-max" onclick="toggleFullscreen('win-terminal')"></span>
+            </div>
+            <div class="window-title">Terminal Bash</div>
+
+        </div>
+        <div class="window-body" style="padding:10px; " onclick="document.getElementById('term-input').focus()">
+            <div class="terminal-container" id="terminal-box">
+                <div class="terminal-history" id="term-history">
+                    <p style="color:#f0f3f6;">DevOS Runtime Shell</p>
+                    <p style="color:#f0f3f6;">Type <span style="color:var(--accent);">help</span> for system commands.</p>
+
+                </div>
+                <div class="terminal-input-row">
+                    <span class="terminal-prompt">user@devos:~$</span>
+                    <input type="text" id="term-input" autocomplete="off" autocapitalize="off" spellcheck="false">
+
+
+                </div>
+            </div>
+            
+
+            
+        </div>
+    </div>
+    <div class="window" id="win-notes" style="top: 80px; left:3400px; width: 34px; display:none">
+        <div class="window-header">
+            <div class="traffic-lights">
+                <span class="dot dot-close" onclick="closeWindow('win-notes','dock-notes')"></span>
+                <span class="dot dot-min" onclick="minimizeWindow('win-notes')"></span>
+                <span class="dot dot-max" onclick="toggleFullscreen('win-notes')"></span>
+            </div>
+            <div class="window-title">Notes</div>
+
+        </div>
+        <div class="window-body" style="padding:10px; " onclick="document.getElementById('term-input').focus()">
+            <div class="notes-layout">
+                <textarea id="notes-text-area" placeholder="Draft Note...."></textarea>
+                <div class="notes-toolbar">
+                    <span style="font-size:0.75rem; color:var(--text-muted);"></span>
+                </div>
+    </div>
     </div>
     
 </body>
