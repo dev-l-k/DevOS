@@ -227,3 +227,180 @@ body{
     flex-direction: column;
     gap:6px;
 }
+.saved-notes-item{
+    background:rgba(255,255,255,0.06);
+    padding: 6px 10px;
+    border: 6px;
+    display:flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 0.78;
+}
+.note-del{
+    color:#ff5f56;
+    font-weight: bold;
+    cursor:pointer;
+    padding:0 4px;
+}
+.contact-card{
+    text-align: center;
+
+}
+.avatar{
+    width:60px;
+    height:60px;
+    border-radius: 50%;
+    background:linear-gradient(135deg,var(--accent) 0%,#4facfe);
+    display:inline-flex;
+    align-items: center;
+    justify-content: center;
+    font-size:1.6rem;
+    font-weight: bold;
+    color:#fff;
+    margin-bottom:8px;
+
+}
+.contact-card h2{font-size: 1.1rem;}
+.contact-card p{color:var(--text-muted);font-size: 0.8rem;margin-bottom: 12px;}
+.contact-links{display:flex;flex-direction: column;gap:6px;text-align: left;}
+.contact-link-item{
+    background:rgba(255,255,255,0.05);
+    border: 1px solid var(--glass-bg);
+    padding: 8px 12px;
+    border-radius: 6px;
+    font-size: 0.78rem;
+    display: flex;
+    justify-content: space-between;
+
+}
+.calc-grid{display:grid; grid-template-columns: repeat(4,1fr);gap:6px;}
+#calc-screen{
+    grid-column: span 4;
+    background: #090a0f;
+    border:1px solid var(--glass-border);
+    border-radius:6px;
+    height:40px;
+    display:flex;
+    align-items: center;
+    justify-content: flex-end;
+    padding: 0 10px;
+    font-size: 1.2rem;
+    font-family: monospace;
+    color:#fff;
+    margin-bottom: 4px;
+}
+.calc-btn{
+    background:rgba(255,255,255,0.08);
+    border: 1px solid var(--glass-border);
+    color:#fff;
+    font-size:0.95rem;
+    padding: 9px 0;
+    border-radius: 6px;
+    cursor:pointer;
+}
+.calc-btn:hover{
+    background: rgba(255,255,255,0.18);
+
+}
+.calc-btn.op{
+    background:rgba(255,121,198,0.2); color:var(--accent);
+}
+.calc-btn.action{
+    background:rgba(255,95,86,0.2); color:#ff5f56;
+}
+
+.color-swatches{
+    display:flex;
+    gap:8px;
+    margin-top: 6px;
+}
+.swatch{
+    width:22px;
+    height:22px;
+    border-radius: 50%;
+    cursor:pointer;
+    border: 2px solid transparent;
+}
+.swatch.active{
+    border-color: #fff;
+}
+#dock{
+    position:fixed;
+    bottom:12px;
+    left:50%;
+    transform:translateX(-50%);
+    background:rgba(20,22,30,0.75);
+    backdrop-filter: blur(20px);
+    -webkit-backdrop-filter: blur(20px);
+    border: 1px solid var(--glass-border);
+    border-radius: 18px;
+    padding:6px 10px;
+    display:flex;
+    gap:10px;
+    z-index: 10000;
+    max-width: 97vw;
+
+}
+.dock-icon{
+    width:42px;
+    height:42px;
+    border-radius: 10px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 1.2rem;
+    cursor:pointer;
+    position:relative;
+    transition: transform 0.2s cubic-bezier(0.34,1.56,0.64,1);
+    box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+    flex-shrink: 0;
+}
+.dock-icon:hover{
+    transform:translateY(-6px) scale(1.08);
+}
+.dock-icon.active::after{
+    content: '';
+    position:absolute;
+    bottom: -3px;
+    width:4px;
+    height:4px;
+    background:#fff;
+    border-radius: 50%;
+}
+.icon-contact{
+    background: linear-gradient(135deg,#ff758c,#ff7eb3);
+    color:#fff;
+}
+.icon-term { background: linear-gradient(135deg, #1e2029, #383a45); color: #7ee787; font-family: monospace; font-weight: bold; }
+.icon-notes { background: linear-gradient(135deg, #f6d365, #fda085); color: #fff; }
+.icon-calc { background: linear-gradient(135deg, #a18cd1, #fbc2eb); color: #fff; }
+.icon-guide { background: linear-gradient(135deg, #4facfe, #00f2fe); color: #fff; }
+.icon-settings { background: linear-gradient(135deg, #43e97b, #38f9d7); color: #111;}
+@media (max-width:640px){
+    .search-pill{
+        display:none;
+    }
+    #dock{
+        bottom:8px;
+        padding:5px 8px;
+        gap:8px;
+    }
+    .dock-icon{
+        width:36px;
+        height:36px;
+        font-size:1rem;
+
+    }
+    .window {
+        width: calc(100vw - 16px) !important;
+        left: 8px !important;
+        top: 40px !important;
+        max-height: calc(100dvh - 105px) !important;
+    }
+    .window.fullscreen {
+        top: 32px !important;
+        left: 0 !important;
+        width: 100vw !important;
+        height: calc(100dvh - 32px - 60px) !important;
+    }
+}
