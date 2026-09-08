@@ -88,10 +88,106 @@
             <div class="notes-layout">
                 <textarea id="notes-text-area" placeholder="Draft Note...."></textarea>
                 <div class="notes-toolbar">
-                    <span style="font-size:0.75rem; color:var(--text-muted);"></span>
-                </div>
+                    <span style="font-size:0.75rem; color:var(--text-muted);">Saved Vault</span>
+                <button class="btn-action" onclick="saveCurrentNote()">Save Note</button>
+            </div>
+            <div class="saved-notes-list" id="saced-notes-container"></div>
+
     </div>
     </div>
-    
+    </div>
+    <div class="window" id="win-calc" style="top:120px; left:140px; width: 260px; display:none">
+        <div class="window-header">
+            <div class="traffic-lights">
+                <span class="dot dot-close" onclick="closeWindow('win-calc','dock-calc')"></span>
+                <span class="dot dot-min" onclick="minimizeWindow('win-calc')"></span>
+                <span class="dot dot-max" onclick="toggleFullscreen('win-calc')"></span>
+            </div>
+            <div class="window-title">Calculator</div>
+
+        </div>
+        <div class="window-body">
+            <div class="calc-grid">
+                <div class="calc-screen">0</div>
+                <button class="calc-btn action" onclick="calcAction('C')">C</button>
+                <button class="calc-btn" onclick="calcAction('±')">±</button>
+                <button class="calc-btn op" onclick="calcAction('%')">%</button>
+                <button class="calc-btn op" onclick="calcAction('/')">/</button>
+                <button class="calc-btn" onclick="calcAction('7')">7</button>
+                <button class="calc-btn" onclick="calcAction('8')">8</button>
+                <button class="calc-btn" onclick="calcAction('9')">9</button>
+                <button class="calc-btn op" onclick="calcAction('*')">×</button>
+                <button class="calc-btn" onclick="calcAction('4')">4</button>
+                <button class="calc-btn" onclick="calcAction('5')">5</button>
+                <button class="calc-btn" onclick="calcAction('6')">6</button>
+                <button class="calc-btn op" onclick="calcAction('-')">-</button>
+                <button class="calc-btn" onclick="calcAction('1')">1</button>
+                <button class="calc-btn" onclick="calcAction('2')">2</button>
+                <button class="calc-btn" onclick="calcAction('3')">3</button>
+                <button class="calc-btn op" onclick="calcAction('+')">+</button>
+                <button class="calc-btn" style="grid-column: span 2;" onclick="calcAction('0')">0</button>
+
+                <button class="calc-btn" onclick="calcAction('.')">.</button>
+                <button class="calc-btn op" style="background: var(--accent); color: #111;" onclick="calcAction('=')">=</button>
+                
+                
+            </div>
+        </div>
+
+    </div>
+    <div class="window" id="win-guide" style="top:70px;left:80px;width:330px;">
+        <div class="window-header">
+            <div class="traffic-lights">
+                <span class="dot dot-close" onclick="closeWindow('win-guide','dock-guide')"></span>
+                <span class="dot dot-min" onclick="minimizeWindow('win-guide')"></span>
+                <span class="dot dot-max" onclick="toggleFullscreen('win-guide')"></span>
+            </div>
+            <div class="window-title">DevOS Guide</div>
+
+        </div>
+        <div class="window-body">
+            <h3 style="color:var(--accent);margin-top:8px;">Controls and Navigation</h3>
+            <p style="margin-bottom: 6px;">🔴 <b>Red:</b> Terminate app and end current session.</p>
+            <p style="margin-bottom: 6px;">🟡 <b>Yellow:</b> Minimize to dock</p>
+            <p style="margin-bottom: 6px;">🟢 <b>Green:</b> Toggle Fullscreen</p>
+            <h3 style="color: var(--accent);margin-bottom: 8px;">Touch and pointer support</h3>
+            <p>Works with both touch and pointer screens.</p>
+
+        </div>
+    </div>
+    <div class="window" id="win-settings">
+        <div class="window-header">
+            <div class="traffic-lights">
+                <span class="dot dot-close" onclick="closeWindow('win-settings','dock-settings')"></span>
+                <span class="dot dot-min" onclick="minimizeWindow('win-settings')"></span>
+                <span class="dot dot-max" onclick="toggleFullscreen('win-settings')"></span>
+            </div>
+            <div class="window-title">Settings</div>
+
+        </div>
+        <div class="window-body">
+            <p style="font-size: 0.75rem; color:var(--text-muted); text-transform: uppercase;">Accent theme</p>
+            <div class="color-swatches">
+                <span class="swatch active" style="background:#ff79c6;" onclick="setAccent('#ff79c6',this)"></span>
+                <span class="swatch" style="background:#bd93f3;" onclick="setAccent('#bd93f3',this)"></span>
+                <span class="swatch" style="background:#50fa7b;" onclick="setAccent('#50fa7b',this)"></span>
+                <span class="swatch" style="background:#8be9fd;" onclick="setAccent('#8be9fd',this)"></span>
+                <span class="swatch" style="background:#ffb8c;" onclick="setAccent('#ffb86c',this)"></span>
+                
+            </div>
+            <button style="margin-top: 16px; padding: 7px 12px;background: rgba(255,255,255,0.1);border:1px solid var(--glass-border);color:#fff;border-radius: 6px;cursor: pointer; font-size: 0.78rem;" onclick="fetchNasaApod()">RELOAD APOD</button>
+
+        </div>
+    </div>
+    <div id="dock">
+        <div class="dock-icon icon-contact" id="dock-contact" title="Contact Me" onclick="dockToggle('win-contact','dock-contact')">👤</div>
+        <div class="dock-icon icon-term" id="dock-term" title="Terminal" onclick="dockToggle('win-terminal','dock-term')">&gt;_</div>
+        <div class="dock-icon icon-notes" id="dock-notes" title="Notes" onclick="dockToggle('win-notes','dock-notes')">📝</div>
+        <div class="dock-icon icon-calc" id="dock-calc" title="Calculator" onclick="dockToggle('win-calc','dock-calc')">🧮</div>
+        <div class="dock-icon icon-guide active" id="dock-guide" title="Guide" onclick="dockToggle('win-guide','dock-guide')">📖</div>
+        <div class="dock-icon icon-settings" id="dock-settings" title="Settings" onclick="dockToggle('win-settings','dock-Settings')">⚙️</div>
+        
+    </div>
+    <script src="script.js"></script>
 </body>
 </html>
