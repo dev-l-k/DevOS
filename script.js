@@ -195,3 +195,64 @@ function calcAction(btn) {
       }
       updateCalcScreen(); 
 }
+const termInput= document.getElementById('term-input');
+const termHistory = document.getElementById('term-history');
+const termBox = document.getElementById('terminal-box');
+termInput.addEventListener('keydown',(e) =>{
+    if (e.key === 'Enter'){
+        const full = termInput.value.trim();
+        if (full){
+            logTerm('user@devos:~$ ${full}', '8b949e');
+            executeCommand(full);
+
+        }
+        termInput.value ='';
+        termBox.scrollTop = termBox.scrollHeight;
+
+    }
+});
+function logTerm(text,color='#f0f3f6'){
+    const p = document.createElement('p');
+    p.style.color = color;
+    p.textContent= text;
+    termHistory.appendChild(p);
+    termBox.scrollTop = termBox.scrollHeight;
+}
+
+function executeCommand(input){
+    const parts = input.split('');
+    const cmd = parts[0].toLowerCase();
+    const args = parts.splice(1).join('');
+    switch (cmd){
+        case 'echo':
+            logTerm(args || '');
+            break;
+        case 'help':
+            logTerm('Commands: echo <text>, clear, date, whoami');
+            break;
+        case 'clear':
+            termHistory.innerHTML='';
+            break;
+        case 'date':
+            logTerm(new Date().toString());
+            break;
+        case 'whoami':
+            logTerm('user9857');
+            break;
+        
+        default:
+            logTerm('Command not found');
+    }
+}
+function setAccent(color,el){
+    document.documentElement.style.setProperty('--accent',color);
+    document.querySelectorAll('.swatch').forEach(s => s.classList.remove('active'));
+    if (el) el.classList.add('active');
+
+}
+function updateClock(){
+    document.getElementById('top-clock').textContent = new Date().toLocaleTimeString();
+
+}
+setInterval(updateClock, 1000);
+updateClock();
