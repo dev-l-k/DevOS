@@ -115,6 +115,9 @@ body{
     position:relative;
     border-bottom: 1px solid var(--glass-border);
     touch-action: none;
+    touch-action: none;
+    user-select: none;
+    -webkit-user-select: none;
 }
 .window-header:active{
     cursor: grabbing;

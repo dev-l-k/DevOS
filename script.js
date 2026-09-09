@@ -76,35 +76,48 @@ function dockToggle(winId,dockId){
     }
 }
 document.querySelectorAll('.window').forEach(win => {
-    const header = win.querySelector(".window-header");
+    const header = win.querySelector('.window-header');
+
     let isDragging = false;
-    let offsetX = 0; offsetY = 0;
-    win.addEventListener('pointerdown',() => bringToFront(win));
-    header.addEventListener('pointerdown',(e)=>{
+    let offsetX = 0;
+    let offsetY = 0;
+
+    win.addEventListener('pointerdown', () => {
+        bringToFront(win);
+    });
+
+    header.addEventListener('pointerdown', (e) => {
         if (e.target.classList.contains('dot')) return;
         if (win.classList.contains('fullscreen')) return;
-        if (win.innerWidth<=640) return;
-        isDragging=true;
-        
-        offsetX=e.clientX - win.offsetLeft;
-        offsetY=e.clientY - win.offsetTop;
+
+        isDragging = true;
+
+        offsetX = e.clientX - win.offsetLeft;
+        offsetY = e.clientY - win.offsetTop;
+
         header.setPointerCapture(e.pointerId);
+        e.preventDefault();
     });
-    header.addEventListener('pointermove',(e) =>{
+
+    header.addEventListener('pointermove', (e) => {
         if (!isDragging) return;
+
         win.style.left = `${e.clientX - offsetX}px`;
         win.style.top = `${e.clientY - offsetY}px`;
     });
-    const stopDrag = (e) => {
-        if (isDragging){
-            isDragging=false;
-            try { header.releasePointerCapture(e.pointerId);} catch(_) {}
 
-        }
+    const stopDrag = (e) => {
+        if (!isDragging) return;
+
+        isDragging = false;
+
+        try {
+            header.releasePointerCapture(e.pointerId);
+        } catch (_) {}
     };
-    
-    header.addEventListener('pointerup',stopDrag);
-    header.addEventListener('pointercancel',stopDrag);
+
+    header.addEventListener('pointerup', stopDrag);
+    header.addEventListener('pointercancel', stopDrag);
 });
 
 function loadSavedNotes(){
