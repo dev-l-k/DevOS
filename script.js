@@ -22,17 +22,18 @@ function toggleFullscreen(winId){
     }
     bringToFront(win);
 }
-function closeWindow(winId, dockId){
-    if (winId === 'win-terminal'){
-        const win = document.getElementById(winId);
-        win.style.display='none';
-        win.classList.remove('minimized');
-        win.classList.remove('fullscreen');
-        if (dockId) document.getElementById(dockId).classList.remove('active');
-        resetSession(winId);
+function closeWindow(winId, dockId) {
+    const win = document.getElementById(winId);
 
+    win.style.display = 'none';
+    win.classList.remove('minimized');
+    win.classList.remove('fullscreen');
+
+    if (dockId) {
+        document.getElementById(dockId)?.classList.remove('active');
     }
 
+    resetSession(winId);
 }
 function resetSession(winId){
     if (winId === 'win-terminal'){
@@ -84,15 +85,15 @@ document.querySelectorAll('.window').forEach(win => {
         if (win.classList.contains('fullscreen')) return;
         if (win.innerWidth<=640) return;
         isDragging=true;
-        if (isDragging) return;
+        
         offsetX=e.clientX - win.offsetLeft;
         offsetY=e.clientY - win.offsetTop;
         header.setPointerCapture(e.pointerId);
     });
     header.addEventListener('pointermove',(e) =>{
-        if (isDragging) return;
-        win.style.left = '${e.clientX - offsetX}px';
-        win.style.top = '${e.clientY - offsetY}px';
+        if (!isDragging) return;
+        win.style.left = `${e.clientX - offsetX}px`;
+        win.style.top = `${e.clientY - offsetY}px`;
     });
     const stopDrag = (e) => {
         if (isDragging){
@@ -150,7 +151,7 @@ function escapeHtml(text){
 }
 loadSavedNotes();
 let calcScreenVal= '0';
-let prevClacVal=null;
+let prevCalcVal=null;
 let currentOp=null;
 let resetScreenNext = false;
 
@@ -203,7 +204,7 @@ termInput.addEventListener('keydown',(e) =>{
     if (e.key === 'Enter'){
         const full = termInput.value.trim();
         if (full){
-            logTerm('user@devos:~$ ${full}', '8b949e');
+            logTerm(`user@devos:~$ ${full}`, '#8b949e');
             executeCommand(full);
 
         }
