@@ -124,3 +124,74 @@ function loadSavedNotes(){
         container.appendChild(item);
       });
 }
+function saveCurrentNote(){
+    const text = document.getElementById("notes-textarea").value.trim();
+    if (!text) return;
+    const notes = JSON.parse(localStorage.getItem('decos_notes')|| '[]');
+    notes.unshift(text);
+    localStorage.setItem('devos_notes',JSON.stringify(notes));
+    document.getElementById('notes-textarea').value ='';
+    loadSavedNotes();
+    
+}
+function deleteNote(index,event){
+    event.stopPropagation();
+    const notes = JSON.parse(localStorage.getItem('devos_notes') || '[]');
+    notes.splice(index,1);
+    localStorage.setItem('devos_notes',JSON.stringify(notes));
+    loadSavedNotes();
+}
+function escapeHtml(text){
+    const div= document.createElement('div');
+    div.textContent = text;
+    return div.innerHTML;
+
+}
+loadSavedNotes();
+let calcScreenVal= '0';
+let prevClacVal=null;
+let currentOp=null;
+let resetScreenNext = false;
+
+function updateCalcScreen(){
+    document.getElementById('calc-screen').textContent=calcScreenVal;
+
+}
+
+function calcAction(btn) {
+      if (!isNaN(btn) || btn === '.') {
+        if (resetScreenNext || calcScreenVal === '0') {
+          calcScreenVal = btn === '.' ? '0.' : btn;
+          resetScreenNext = false;
+        } else {
+          if (btn === '.' && calcScreenVal.includes('.')) return;
+          calcScreenVal += btn;
+        }
+      } else if (btn === 'C') {
+        calcScreenVal = '0';
+        prevCalcVal = null;
+        currentOp = null;
+      } else if (btn === '±') {
+        calcScreenVal = (parseFloat(calcScreenVal) * -1).toString();
+      } else if (btn === '%') {
+        calcScreenVal = (parseFloat(calcScreenVal) / 100).toString();
+      } else if (['+', '-', '*', '/'].includes(btn)) {
+        prevCalcVal = parseFloat(calcScreenVal);
+        currentOp = btn;
+        resetScreenNext = true;
+      } else if (btn === '=') {
+        if (currentOp && prevCalcVal !== null) {
+          const current = parseFloat(calcScreenVal);
+          let result = 0;
+          if (currentOp === '+') result = prevCalcVal + current;
+          if (currentOp === '-') result = prevCalcVal - current;
+          if (currentOp === '*') result = prevCalcVal * current;
+          if (currentOp === '/') result = current !== 0 ? prevCalcVal / current : 'Error';
+          calcScreenVal = result.toString();
+          currentOp = null;
+          prevCalcVal = null;
+          resetScreenNext = true;
+        }
+      }
+      updateCalcScreen(); 
+}
