@@ -57,7 +57,7 @@ function minimizeWindow(winId){
     document.getElementById(winId).classList.add('minimized');
 
 }
-function dockToggle(winId,deckId){
+function dockToggle(winId,dockId){
     const win = document.getElementById(winId);
     const dockIcon = document.getElementById(dockId);
     if (win.style.display === 'none'){
@@ -84,8 +84,9 @@ document.querySelectorAll('.window').forEach(win => {
         if (win.classList.contains('fullscreen')) return;
         if (win.innerWidth<=640) return;
         isDragging=true;
+        if (isDragging) return;
         offsetX=e.clientX - win.offsetLeft;
-        offsetY=e.client - win.offsetTop;
+        offsetY=e.clientY - win.offsetTop;
         header.setPointerCapture(e.pointerId);
     });
     header.addEventListener('pointermove',(e) =>{
@@ -127,7 +128,7 @@ function loadSavedNotes(){
 function saveCurrentNote(){
     const text = document.getElementById("notes-textarea").value.trim();
     if (!text) return;
-    const notes = JSON.parse(localStorage.getItem('decos_notes')|| '[]');
+    const notes = JSON.parse(localStorage.getItem('devos_notes')|| '[]');
     notes.unshift(text);
     localStorage.setItem('devos_notes',JSON.stringify(notes));
     document.getElementById('notes-textarea').value ='';
@@ -220,7 +221,7 @@ function logTerm(text,color='#f0f3f6'){
 }
 
 function executeCommand(input){
-    const parts = input.split('');
+    const parts = input.split(' ');
     const cmd = parts[0].toLowerCase();
     const args = parts.splice(1).join('');
     switch (cmd){

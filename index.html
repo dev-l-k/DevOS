@@ -21,7 +21,6 @@
     </div>
     </div>
     <div id="wallpaper-branding">DevOS</div>
-    <div id="apod-caption">Contacting NASA API</div>
     <div class="window" id="win-contact" style="top:70px; left:60px; width: 320px; display:none">
         <div class="window-header">
             <div class="traffic-lights">
@@ -87,12 +86,12 @@
         </div>
         <div class="window-body" style="padding:10px; " onclick="document.getElementById('term-input').focus()">
             <div class="notes-layout">
-                <textarea id="notes-text-area" placeholder="Draft Note...."></textarea>
+                <textarea id="notes-textarea" placeholder="Draft Note...."></textarea>
                 <div class="notes-toolbar">
                     <span style="font-size:0.75rem; color:var(--text-muted);">Saved Vault</span>
                 <button class="btn-action" onclick="saveCurrentNote()">Save Note</button>
             </div>
-            <div class="saved-notes-list" id="saced-notes-container"></div>
+            <div class="saved-notes-list" id="saved-notes-container"></div>
 
     </div>
     </div>
@@ -109,7 +108,7 @@
         </div>
         <div class="window-body">
             <div class="calc-grid">
-                <div class="calc-screen">0</div>
+                <div class="calc-screen" id="calc-screen">0</div>
                 <button class="calc-btn action" onclick="calcAction('C')">C</button>
                 <button class="calc-btn" onclick="calcAction('±')">±</button>
                 <button class="calc-btn op" onclick="calcAction('%')">%</button>
