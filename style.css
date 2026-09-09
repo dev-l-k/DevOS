@@ -30,7 +30,7 @@ body{
 #topbar{
     height:32px;
     background: rgba(10,12,18,0.78);
-    border-bottom: 1px solid var(--glass-border);
+    border-bottom: 1px solid var(--border);
     display:flex;
     align-items: center;
     justify-content: space-between;
@@ -51,7 +51,7 @@ body{
 }
 .search-pill{
     background:rgba(255,255,255,0.08);
-    border:1px solid var(--glass-border);
+    border:1px solid var(--border);
     border-radius:6px;
     padding: 4px 12px;
     font-size:0.75rem;
@@ -297,7 +297,7 @@ body{
 }
 .calc-btn{
     background:rgba(255,255,255,0.08);
-    border: 1px solid var(--glass-border);
+    border: 1px solid var(--border);
     color:#fff;
     font-size:0.95rem;
     padding: 9px 0;
@@ -336,7 +336,7 @@ body{
     left:50%;
     transform:translateX(-50%);
     background:rgba(20,22,30,0.75);
-    border: 1px solid var(--glass-border);
+    border: 1px solid var(--border);
     border-radius: 18px;
     padding:6px 10px;
     display:flex;
