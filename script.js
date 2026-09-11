@@ -389,7 +389,37 @@ async function loadWeather(){
         result.textContent="Location Permission Denied";
     });
 }
+let stopwatchTime = 0;
+let stopwatchInterval;
 
+function updateStopwatch(){
+    const h = Math.floor(stopwatchTime / 3600);
+    const m = Math.floor(stopwatchTime % 3600 / 60);
+    const s = stopwatchTime % 60;
+
+    document.getElementById("stopwatch").textContent =
+        `${String(h).padStart(2,"0")}:${String(m).padStart(2,"0")}:${String(s).padStart(2,"0")}`;
+}
+
+function startStopwatch(){
+    if(stopwatchInterval) return;
+
+    stopwatchInterval = setInterval(()=>{
+        stopwatchTime++;
+        updateStopwatch();
+    },1000);
+}
+
+function stopStopwatch(){
+    clearInterval(stopwatchInterval);
+    stopwatchInterval = null;
+}
+
+function resetStopwatch(){
+    stopStopwatch();
+    stopwatchTime = 0;
+    updateStopwatch();
+}
 loadWeather();
 loadNASAWallpaper();
 setInterval(updateClock, 1000);

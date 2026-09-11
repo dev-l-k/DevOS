@@ -487,6 +487,23 @@ body{
     margin-top: 10px;
     color:var(--text-muted);
 }
+#stopwatch{
+    font-size:2rem;
+    font-weight:bold;
+    margin-top:30px;
+}
+
+.stopwatch-controls{
+    display:flex;
+    justify-content:center;
+    gap:8px;
+    margin-top:15px;
+}
+
+.stopwatch-controls button{
+    padding:8px 12px;
+    cursor:pointer;
+}
 
 
 @media (max-width:640px){
