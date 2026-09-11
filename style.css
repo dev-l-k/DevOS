@@ -25,6 +25,7 @@ body{
     color:var(--text-main);
     position: relative;
     touch-action: manipulation;
+    backdrop-filter: blur(10px);
 
 
 }
