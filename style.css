@@ -26,8 +26,6 @@ body{
     position: relative;
     touch-action: manipulation;
     backdrop-filter: blur(10px);
-
-
 }
 #topbar{
     height:32px;
