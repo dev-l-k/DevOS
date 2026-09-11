@@ -269,5 +269,40 @@ function updateClock(){
     document.getElementById('top-clock').textContent = new Date().toLocaleTimeString();
 
 }
+async function loadNASAWallpaper() {
+    try {
+        const response = await fetch("/api/apod");
+
+        if (!response.ok) {
+            throw new Error("Failed to load APOD");
+        }
+
+        const data = await response.json();
+
+        if (data.media_type === "image") {
+            document.body.style.backgroundImage = `url("${data.url}")`;
+
+            const title = document.getElementById("apod-title");
+
+            if (title) {
+                title.textContent = `NASA APOD: ${data.title}`;
+            }
+
+            localStorage.setItem("devos_apod", data.url);
+        }
+
+    } catch (error) {
+        console.error("NASA APOD Error:", error);
+
+        const savedWallpaper = localStorage.getItem("devos_apod");
+
+        if (savedWallpaper) {
+            document.body.style.backgroundImage =
+                `url("${savedWallpaper}")`;
+        }
+    }
+}
+
+loadNASAWallpaper();
 setInterval(updateClock, 1000);
 updateClock();
