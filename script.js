@@ -276,7 +276,10 @@ function executeCommand(input){
                 logTerm('Invalid \n Use theme pink | purple | green');
             }
             break;
-        
+        case 'open':
+            if (args){
+                openApp(args);
+            }
         
         default:
             logTerm('Command not found');
