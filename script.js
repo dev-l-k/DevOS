@@ -289,7 +289,14 @@ function setAccent(color,el){
 
 }
 function updateClock(){
-    document.getElementById('top-clock').textContent = new Date().toLocaleTimeString();
+    const now = new Date();
+    document.getElementById('clock-time').textContent=now.toLocaleTimeString();
+    document.getElementById('clock-date').textContent=now.toLocaleDateString(undefined,{
+        weekday:"long",
+        year:"numeric",
+        month:"long",
+        day:"numeric"
+    });
 
 }
 async function loadNASAWallpaper() {
@@ -331,7 +338,9 @@ function openApp(app){
     notes : ["win-notes","dock-notes"],
     calculator : ["win-calc","dock-calc"],
     settings : ["win-settings","dock-settings"],
-    about : ["win-contact","dock-contact"]
+    about : ["win-contact","dock-contact"],
+    clock: ["win-clock", "dock-clock"],
+    weather: ["win-weather", "dock-weather"],
     };
     app = app.toLowerCase();
     if (apps[app]){

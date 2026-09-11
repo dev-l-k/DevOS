@@ -153,6 +153,23 @@
 
 
     </div>
+
+    <div class="window" id="win-clock" style="top:100px;left:250px;width:330px;display:none;">
+        <div class="window-header">
+    <div class="traffic-lights">
+        <span class="dot dot-close" onclick="closeWindow('win-clock','dock-clock')"></span>
+            <span class="dot dot-min" onclick="minimizeWindow('win-clock')"></span>
+            <span class="dot dot-max" onclick="toggleFullscreen('win-clock')"></span>
+
+    </div>
+    <div class="window-title">Clock</div>
+
+</div>
+<div class="window-body clock-app">
+    <div id="clock-time">00:00:00</div>
+    <div id="clock-date"></div>
+</div>
+    </div>
     <div class="window" id="win-guide" style="top:70px;left:80px;width:330px;">
         <div class="window-header">
             <div class="traffic-lights">
@@ -203,10 +220,8 @@
         <div class="dock-icon icon-calc" id="dock-calc" title="Calculator" onclick="dockToggle('win-calc','dock-calc')">🧮</div>
         <div class="dock-icon icon-guide active" id="dock-guide" title="Guide" onclick="dockToggle('win-guide','dock-guide')">📖</div>
         <div class="dock-icon icon-settings" id="dock-settings" title="Settings" onclick="dockToggle('win-settings','dock-settings')">⚙️</div>
-        <div class="dock-icon icon-weather" id="dock-weather"
-             onclick="dockToggle('win-weather','dock-weather')">
-                 ☁️
-                 </div>
+        <div class="dock-icon icon-weather" id="dock-weather" onclick="dockToggle('win-weather','dock-weather')"> ☁️</div>
+        <div class="dock-icon icon-clock" id="dock-clock" onclick="dockToggle('win-clock','dock-clock')">🕒</div>
         
     </div>
 
@@ -216,6 +231,8 @@
         <button onclick="openApp('calculator')">Calculator</button>
         <button onclick="openApp('settings')">Settings</button>
         <button onclick="openApp('about')">About</button>
+        <button onclick="openApp('weather')">Weather</button>
+        <button onclick="openApp('clock')">Clock</button>
     </div>
     <div id="window-menu" class="top-menu">
         <button onclick="minimizeActiveWindow()">Minimize Active Window</button>
