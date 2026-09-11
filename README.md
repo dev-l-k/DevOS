@@ -25,3 +25,7 @@ DevOS uses JavaScript to control the interactive parts of the interface. Applica
 
 ## Live Link
 https://os.devlkakkoth.me
+
+## Note for shipwrights
+
+I hasn't used vibecoding in this.i just used ai to polish my ui a little and to solve js errors. so please read the complete code correcly.
