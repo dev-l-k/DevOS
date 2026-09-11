@@ -295,7 +295,7 @@ function setAccent(color,el){
 }
 function updateClock(){
     const now = new Date();
-    document.getElementById('top-clock').textContent=now.toTimeString();
+    document.getElementById('top-clock').textContent=now.toLocaleTimeString();
     document.getElementById('clock-time').textContent=now.toLocaleTimeString();
     document.getElementById('clock-date').textContent=now.toLocaleDateString(undefined,{
         weekday:"long",
