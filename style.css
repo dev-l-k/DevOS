@@ -487,22 +487,34 @@ body{
     margin-top: 10px;
     color:var(--text-muted);
 }
-#stopwatch{
-    font-size:2rem;
-    font-weight:bold;
-    margin-top:30px;
+.stopwatch-controls {
+    display: flex;
+    justify-content: center;
+    gap: 10px;
+    margin-top: 15px;
 }
 
-.stopwatch-controls{
-    display:flex;
-    justify-content:center;
-    gap:8px;
-    margin-top:15px;
+.stopwatch-controls button {
+    padding: 9px 16px;
+    border: 1px solid var(--border);
+    border-radius: 8px;
+    background: rgba(255,255,255,0.08);
+    color: var(--text-main);
+    cursor: pointer;
+    transition: 0.2s;
 }
 
-.stopwatch-controls button{
-    padding:8px 12px;
-    cursor:pointer;
+.stopwatch-controls button:hover {
+    background: var(--accent);
+    color: #111;
+    transform: translateY(-2px);
+}
+
+#stopwatch {
+    font-size: 2rem;
+    font-weight: bold;
+    margin-top: 25px;
+    font-family: monospace;
 }
 
 
