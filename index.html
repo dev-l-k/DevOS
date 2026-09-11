@@ -9,11 +9,13 @@
 <body>
     <div id="topbar">
         <span class="os-logo">DevOS</span>
-        <span>Window</span>
-        <span>Apps</span>
+        
+        <button class="topbar-btn" onclick="showAppsMenu()">
+            Apps
+        </button>
     
-    <div class="search-pill" id="apod-title">
-        Loading APOD
+    <div class="search-pill" id="apod-title" onclick="loadNASAWallpaper()">
+        Load APOD
     </div>
     <div class="top-right">
         <span id="top-clock">00:00:00</span>
@@ -187,6 +189,19 @@
         <div class="dock-icon icon-settings" id="dock-settings" title="Settings" onclick="dockToggle('win-settings','dock-settings')">⚙️</div>
         
     </div>
+
+    <div class="top-menu" id="apps-menu">
+        <button onclick="openApp('terminal')">Terminal</button>
+        <button onclick="openApp('notes')">Notes</button>
+        <button onclick="openApp('calculator')">Calculator</button>
+        <button onclick="openApp('settings')">Settings</button>
+        <button onclick="openApp('about')">About</button>
+    </div>
+    <div id="window-menu" class="top-menu">
+        <button onclick="minimizeActiveWindow()">Minimize Active Window</button>
+        <button onclick="closeActiveWindow()">Close Active Window</button>
+    </div>
+
     <script src="script.js"></script>
 </body>
 </html>

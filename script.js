@@ -106,6 +106,7 @@ document.querySelectorAll('.window').forEach(win => {
         win.style.top = `${e.clientY - offsetY}px`;
     });
 
+
     const stopDrag = (e) => {
         if (!isDragging) return;
 
@@ -243,7 +244,7 @@ function executeCommand(input){
             logTerm(args || '');
             break;
         case 'help':
-            logTerm('Commands: echo <text>, clear, date, whoami');
+            logTerm('Commands: echo <text>, clear, date, whoami,time, theme <theme>, about');
             break;
         case 'clear':
             termHistory.innerHTML='';
@@ -251,9 +252,31 @@ function executeCommand(input){
         case 'date':
             logTerm(new Date().toString());
             break;
+        case 'time':
+            logTerm(new Date().toTimeString());
+            break;
         case 'whoami':
             logTerm('user9857');
             break;
+        case 'about':
+            logTerm('DevOS - Web based OS');
+            break;
+        case 'theme':
+            if (args === 'pink'){
+                setAccent('#ff79c6');
+                logTerm('Theme changed to pink')
+            }else if(args==='purple'){
+                setAccent('#bd93f3');
+                logTerm('Theme changed to purple');
+            }else if(args==='green'){
+                setAccent('#50fa7b');
+                logTerm('Theme changed to green');
+
+            }else{
+                logTerm('Invalid \n Use theme pink | purple | green');
+            }
+            break;
+        
         
         default:
             logTerm('Command not found');
@@ -302,6 +325,31 @@ async function loadNASAWallpaper() {
         }
     }
 }
+function openApp(app){
+    const apps = {
+    terminal: ["win-terminal","dock-term"],
+    notes : ["win-notes","dock-notes"],
+    calculator : ["win-calc","dock-calc"],
+    settings : ["win-settings","dock-settings"],
+    about : ["win-contact","dock-contact"]
+    };
+    app = app.toLowerCase();
+    if (apps[app]){
+        dockToggle(apps[app][0],apps[app][1]);
+        logTerm(`Opening ${app}`);
+    }else{
+        logTerm("App not found");
+    }
+}
+
+function showAppsMenu(){
+    const menu = document.getElementById('apps-menu');
+    menu.classList.toggle('show');
+    document.getElementById('window-menu').classList.remove('show');
+
+}
+
+
 
 loadNASAWallpaper();
 setInterval(updateClock, 1000);

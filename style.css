@@ -42,6 +42,19 @@ body{
     position: relative;
     
 }
+.topbar-btn{
+    background:none;
+    border: none;
+    color:var(--text-main);
+    cursor:pointer;
+    font-size:0.8rem;
+
+}
+.topbar-btn:hover{
+    color:var(--accent);
+
+}
+
 .top-left, .top-right{
     display:flex; 
     align-items:center;
@@ -84,7 +97,8 @@ body{
     display: flex;
     flex-direction: column;
     min-width: 270px;
-
+    max-width:100vw;
+    max-height: calc(100dvh - 70px);
     transition: transform 0.22s ease,opacity 0.2s ease, width 0.2s ease, height 0.2s ease;
 
 }
@@ -416,6 +430,9 @@ body{
 .icon-calc { background: #8065b5; color: #fff; }
 .icon-guide { background: #4b8fc9; color: #fff; }
 .icon-settings { background: #4baf82; color: #111;}
+
+
+
 @media (max-width:640px){
     .search-pill{
         display:none;
