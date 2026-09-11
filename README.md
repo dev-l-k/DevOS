@@ -31,6 +31,7 @@ DevOS is a browser-based desktop environment built with HTML, CSS, and JavaScrip
 - HTML for the structure of the interface
 - CSS for styling, layouts, and responsiveness
 - JavaScript for interactions and window management
+- Deployed via Vercel 
 
 ## How It Works
 
