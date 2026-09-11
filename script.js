@@ -358,7 +358,7 @@ async function loadWeather(){
             const place = location.address.city || location.address.town || location.address.village || "Your Location";
             result.innerHTML=`
             <h2>${place}</h2>
-            <h1>${Math.rofund(weather.current.temperature_2m)}°C</h1>
+            <h1>${Math.round(weather.current.temperature_2m)}°C</h1>
             <p>Humidity: ${weather.current.relative_humidity_2m}%</p>
 
             `;
