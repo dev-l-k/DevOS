@@ -244,7 +244,7 @@ function executeCommand(input){
             logTerm(args || '');
             break;
         case 'help':
-            logTerm('Commands: echo <text>, clear, date, whoami,time, theme <theme>, about');
+            logTerm('Commands: echo <text>, clear, date, whoami,time, theme <theme>, about, open <app name>');
             break;
         case 'clear':
             termHistory.innerHTML='';
