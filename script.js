@@ -279,7 +279,9 @@ function executeCommand(input){
         case 'open':
             if (args){
                 openApp(args);
+
             }
+            break;
         
         default:
             logTerm('Command not found');
