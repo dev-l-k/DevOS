@@ -355,7 +355,17 @@ async function loadWeather(){
         try{
             const location = await fetch(`https://nominatim.openstreetmap.org/reverse?lat=${lat}&lon=${lon}&format=json`).then(r => r.json());
             const weather = await fetch(`https://api.open-meteo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current=temperature_2m,relative_humidity_2m`).then(r => r.json());
-            const place = location.address.city || location.address.town || location.address.village || "Your Location";
+            const address = location.address;
+            const place =
+            address.city ||
+            address.town ||
+            address.village ||
+            address.suburb ||
+            address.county ||
+            address.state_district ||
+            location.display_name?.split(",")[0] ||
+            "Your Location";
+            
             result.innerHTML=`
             <h2>${place}</h2>
             <h1>${Math.round(weather.current.temperature_2m)}°C</h1>
