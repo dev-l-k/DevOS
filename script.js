@@ -348,9 +348,30 @@ function showAppsMenu(){
     document.getElementById('window-menu').classList.remove('show');
 
 }
+async function loadWeather(){
+    const result = document.getElementById('weather-result');
+    navigator.geolocation.getCurrentPosition(async pos => {
+        const {latitude:lat,longitude:lon} = pos.coords;
+        try{
+            const location = await fetch(`https://nominatim.openstreetmap.org/reverse?lat=${lat}&lon=${lon}&format=json`).then(r => r.json());
+            const weather = await fetch(`https://api.open-mateo.com/v1/forecast?latitude=${lat}&longitude=${lon}&current=temperature_2m,relative_humidity_2m`).then(r => r.json());
+            const place = location.address.city || location.address.town || location.address.village || "Your Location";
+            result.innerHTML=`
+            <h2>${place}</h2>
+            <h1>${Math.rofund(weather.current.temperature_2m)}°C</h1>
+            <p>Humidity: ${weather.current.relative_humidity_2m}%</p>
 
+            `;
 
+        }catch{
+            result.textContent="Failed to load Weather";
+        }
+    },()=>{
+        result.textContent="Location Permission Denied";
+    });
+}
 
+loadWeather();
 loadNASAWallpaper();
 setInterval(updateClock, 1000);
 updateClock();

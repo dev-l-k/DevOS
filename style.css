@@ -114,6 +114,19 @@ body{
     pointer-events:none;
 
 }
+.weather-app {
+    padding: 20px;
+    text-align: center;
+}
+
+#weather-result h2 {
+    margin: 10px 0;
+}
+
+#weather-result h1 {
+    font-size: 3rem;
+    margin: 15px 0;
+}
 
 .window{
     position:absolute;
@@ -459,6 +472,7 @@ body{
 .icon-calc { background: #8065b5; color: #fff; }
 .icon-guide { background: #4b8fc9; color: #fff; }
 .icon-settings { background: #4baf82; color: #111;}
+.icon-weather { background:#d6a22a; color:#fff;}
 
 
 

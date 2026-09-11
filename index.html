@@ -137,6 +137,22 @@
         </div>
 
     </div>
+    <div class="window" id="win-weather" style="top:120px;left:180px;width:320px;display:none;">
+<div class="window-header">
+    <div class="traffic-lights">
+        <span class="dot dot-close" onclick="closeWindow('win-weather','dock-weather')"></span>
+            <span class="dot dot-min" onclick="minimizeWindow('win-weather')"></span>
+            <span class="dot dot-max" onclick="toggleFullscreen('win-weather')"></span>
+
+    </div>
+    <div class="window-title">Weather</div>
+</div>
+<div class="window-body weather-app">
+    <div id="weather-result">Detecting..</div>
+</div>
+
+
+    </div>
     <div class="window" id="win-guide" style="top:70px;left:80px;width:330px;">
         <div class="window-header">
             <div class="traffic-lights">
@@ -187,6 +203,10 @@
         <div class="dock-icon icon-calc" id="dock-calc" title="Calculator" onclick="dockToggle('win-calc','dock-calc')">🧮</div>
         <div class="dock-icon icon-guide active" id="dock-guide" title="Guide" onclick="dockToggle('win-guide','dock-guide')">📖</div>
         <div class="dock-icon icon-settings" id="dock-settings" title="Settings" onclick="dockToggle('win-settings','dock-settings')">⚙️</div>
+        <div class="dock-icon icon-weather" id="dock-weather"
+             onclick="dockToggle('win-weather','dock-weather')">
+                 ☁️
+                 </div>
         
     </div>
 
